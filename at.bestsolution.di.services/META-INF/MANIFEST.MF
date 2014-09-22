@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Services
+Bundle-SymbolicName: at.bestsolution.di.services
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: at.bestsolution.di.services
+Service-Component: OSGI-INF/services/dummytranslation.xml
+Bundle-ActivationPolicy: lazy

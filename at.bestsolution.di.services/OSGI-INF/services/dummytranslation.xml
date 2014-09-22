@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.di.services.dummytranslation">
+   <implementation class="at.bestsolution.di.services.impl.DummyTranslationService"/>
+   <service>
+      <provide interface="at.bestsolution.di.services.TranslationService"/>
+   </service>
+</scr:component>
