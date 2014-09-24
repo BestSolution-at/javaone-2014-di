@@ -16,6 +16,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import org.json.JSONObject;
 
@@ -27,7 +29,7 @@ public class GoogleTranslate implements TranslationService {
 	// https://developers.google.com/translate/v2/using_rest#language-params
 	
 	@Override
-	public String translate(String language, String term) {
+	public String[] translate(String language, String... term) {
 		if( API_KEY == null ) {
 			BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
 			System.out.print("Enter google-API key: ");
@@ -39,7 +41,7 @@ public class GoogleTranslate implements TranslationService {
 			}
 		}
 		try {
-			URL url = new URL("https://www.googleapis.com/language/translate/v2?key="+API_KEY+"&q="+term+"&source=en&target="+language);
+			URL url = new URL("https://www.googleapis.com/language/translate/v2?key="+API_KEY+"&q="+String.join(",",term)+"&source=en&target="+language);
 			InputStream stream = url.openStream();
 			BufferedReader r = new BufferedReader(new InputStreamReader(stream));
 			String line;
@@ -51,7 +53,7 @@ public class GoogleTranslate implements TranslationService {
 			
 			JSONObject o = new JSONObject(b.toString());
 			String rv = o.getJSONObject("data").getJSONArray("translations").getJSONObject(0).getString("translatedText");
-			return rv;
+			return Arrays.stream(rv.split(",")).map((e)->e.trim()).toArray(s -> new String[s]);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -59,7 +61,7 @@ public class GoogleTranslate implements TranslationService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return new String[0];
 	}
 
 }

@@ -43,6 +43,6 @@ public class GreetingActor {
 	
 	@Execute
 	public void greet(TranslationService t) {
-		this.service.greet(t.translate(language,"Hello") + " '" + this.personName + "'!");
+		this.service.greet(t.translate(language,"Hello")[0] + " '" + this.personName + "'!");
 	}
 }

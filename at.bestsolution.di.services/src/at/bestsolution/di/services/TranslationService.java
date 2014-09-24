@@ -11,5 +11,5 @@
 package at.bestsolution.di.services;
 
 public interface TranslationService {
-	public String translate(String language, String term);
+	public String[] translate(String language, String... term);
 }

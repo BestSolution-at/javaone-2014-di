@@ -15,19 +15,19 @@ import at.bestsolution.di.services.TranslationService;
 public class DummyTranslationService implements TranslationService {
 
 	@Override
-	public String translate(String language, String term) {
+	public String[] translate(String language, String... term) {
 		if( "en".equals(language) ) {
 			return term;
 		}
 		
 		if( "Hello".equals(term) ) {
 			if( "de".equals(language) ) {
-				return "Hallo";
+				return new String[] { "Hallo" };
 			} else if( "fr".equals(language) ) {
-				return "Bonjour";
+				return new String[] { "Bonjour" };
 			}
 		}
-		return term + "(lang="+language+")";
+		return new String[] { term + "(lang="+language+")" };
 	}
 
 }
