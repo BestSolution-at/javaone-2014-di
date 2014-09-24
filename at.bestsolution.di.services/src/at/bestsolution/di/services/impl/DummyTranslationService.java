@@ -20,14 +20,20 @@ public class DummyTranslationService implements TranslationService {
 			return term;
 		}
 		
-		if( "Hello".equals(term) ) {
+		if( "Hello".equals(term[0]) ) {
 			if( "de".equals(language) ) {
 				return new String[] { "Hallo" };
 			} else if( "fr".equals(language) ) {
 				return new String[] { "Bonjour" };
 			}
 		}
-		return new String[] { term + "(lang="+language+")" };
+		
+		return new String[] { term[0] + "(lang="+language+")" };
+	}
+
+	@Override
+	public String[] getLocales() {
+		return new String[] { "en","de","fr" };
 	}
 
 }
