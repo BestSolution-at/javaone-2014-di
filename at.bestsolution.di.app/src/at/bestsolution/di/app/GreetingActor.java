@@ -10,39 +10,20 @@
  *******************************************************************************/
 package at.bestsolution.di.app;
 
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.eclipse.e4.core.di.annotations.Execute;
-
 import at.bestsolution.di.services.GreetingService;
-import at.bestsolution.di.services.TranslationService;
 
 public class GreetingActor {
-	private final String personName;
+	private String personName;
 	
 	private GreetingService service;
 	
 	private String language;
 	
-	@Inject
-	public GreetingActor(@Named("Name") String personName) {
-		this.personName = personName;
-	}
+	// Use constructor DI for the name
+
+	// Use @PostConstruct for the GreetingService
 	
-	@PostConstruct
-	private void init(GreetingService service) {
-		this.service = service;
-	}
-	
-	@Inject
-	public void setLanguage(@Named("Language") String language) {
-		this.language = language;
-	}
-	
-	@Execute
-	public void greet(TranslationService t) {
-		this.service.greet(t.translate(language,"Hello")[0] + " '" + this.personName + "'!");
-	}
+	// Use method injection for the language
+
+	// Use @Execute for the greeting-method
 }

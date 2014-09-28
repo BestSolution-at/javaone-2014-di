@@ -10,22 +10,12 @@
  *******************************************************************************/
 package at.bestsolution.di.app;
 
-import javax.inject.Inject;
-
-import org.eclipse.e4.core.di.annotations.Execute;
-
 import at.bestsolution.di.services.LanguageProviderService;
 
 public class LanguageActor {
-	private final LanguageProviderService languageService;
+	private LanguageProviderService languageService;
 	
-	@Inject
-	public LanguageActor(LanguageProviderService languageService) {
-		this.languageService = languageService;
-	}
-	
-	@Execute
-	public String requestLanguage() {
-		return languageService.getLanguage();
-	}
+	// Use constructor injection for the LanguageProviderService
+
+	// Use @Execute for requestLanguage() method
 }
