@@ -24,7 +24,7 @@ import org.json.JSONObject;
 import at.bestsolution.di.services.TranslationService;
 
 public class GoogleTranslate implements TranslationService {
-	private String API_KEY = "AIzaSyCYJ8Aqt0oEy0xbkyaJibKSk0akAR46x5I";
+	private String API_KEY = null;
 	
 	// https://developers.google.com/translate/v2/using_rest#language-params
 	
